@@ -34,7 +34,7 @@ ingress:
   class: ""
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-  host: ollama
+  host: suse-ollama-webui
   tls: true
 service:
   type: NodePort
