@@ -2,7 +2,7 @@ global:
   imagePullSecrets:
   - application-collection
 cluster:
-  enabled: False
+  enabled: True
 standalone:
   persistence:
     persistentVolumeClaim:
@@ -12,8 +12,8 @@ etcd:
   persistence:
     storageClassName: local-path
 minio:
-  mode: standalone
-  replicas: 1
+  mode: distributed
+  replicas: 3
   rootUser: "admin"
   rootPassword: "adminminio"
   persistence:
@@ -24,7 +24,7 @@ minio:
 kafka:
   enabled: true
   name: kafka
-  replicaCount: 1
+  replicaCount: 3
   broker:
     enabled: true
   cluster:
@@ -34,6 +34,7 @@ kafka:
       controller:
         protocol: 'PLAINTEXT'
   persistence:
+    enabled: true
     annotations: {}
     labels: {}
     existingClaim: ""
